@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="SpikeriNami">
+        <item>http://92.63.86.168</item>
+        <item>80</item>
+    </string-array>
+
+    <string-array name="VolvoStrong">
+        <item>http://104.45.84.145</item>
+        <item>82</item>
+    </string-array>
+
+    <string-array name="FidparkWeb">
+        <item>http://fidparkWeb.bis.lv</item>
+        <item>80</item>
+    </string-array>
+</resources>

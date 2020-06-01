@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <item android:id="@+id/nav_check_one_lpn"
+        android:title="check one LPN"
+        android:icon="@drawable/ic_chevron_right"/>
+    <item android:title="Filter"
+        android:id="@+id/nav_FilterBT"
+        android:icon="@drawable/ic_filter_frames"/>
+
+    <item android:title="Change DB"
+        android:id="@+id/nav_LoginBT"
+        android:icon="@drawable/ic_store_black"/>
+
+    <item android:title="Language:">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_LanguageEN"
+                    android:title="@string/English_lang"
+                    android:icon="@drawable/ic_language_black"/>
+                <item
+                    android:id="@+id/nav_LanguageRU"
+                    android:title="@string/Russian_lang"
+                    android:icon="@drawable/ic_language_black"/>
+                <item
+                    android:id="@+id/nav_LanguageLV"
+                    android:title="@string/Latvian_lang"
+                    android:icon="@drawable/ic_language_black"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Exit"
+        android:id="@+id/nav_ExitBT"
+        android:icon="@drawable/ic_exit_to_app"/>
+</menu>

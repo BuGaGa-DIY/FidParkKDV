@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="refressBTtextColor">#FFFFFFFF</color>
+    <color name="refreshBTbackColor">#FF2196F3</color>
+    <color name="sortBTcolor">#8040FF00</color>
+    <color name="listItemBackground1">#262196F3</color>
+    <color name="listItemBackground2">#262164F3</color>
+
+    <color name="AbonnementTextColor">#FF3061F5</color>
+    <color name="MobillyTextColor">#FFFD812E</color>
+    <color name="TimeEndsTextColor">#FFB31B1B</color>
+    <color name="TimeOKTextColor">#FF2A8B4D</color>
+    <color name="TimeColseToEndTextColor">#FFBEBE1D</color>
+
+    <color name="Layout0">#262196F3</color>
+    <color name="Layout1">#333264F3</color>
+</resources>

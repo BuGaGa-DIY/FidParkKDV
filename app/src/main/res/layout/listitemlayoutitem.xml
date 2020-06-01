@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"></Space>
+
+    <TextView
+        android:id="@+id/item_list_lnp"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:textColor="#FF000000"
+        android:background="@drawable/numbt"
+        android:text="TextView"
+        android:textSize="20dp" />
+
+    <Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/item_list_time"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#3061F5"
+        android:textColorHighlight="#00580505"
+        android:textSize="20dp" />
+
+</LinearLayout>

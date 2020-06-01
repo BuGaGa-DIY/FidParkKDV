@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="RefreshBT">
+        <item>Refresh</item>
+        <item>Обновить</item>
+        <item>Atjaunot</item>
+    </array>
+
+    <array name="NavCheckOneLpnBT">
+        <item>Check number</item>
+        <item>Проверить номер</item>
+        <item>Pārbaudiet numuru</item>
+    </array>
+
+    <array name="NavFilterBT">
+        <item>Filter</item>
+        <item>Фильтер</item>
+        <item>Filtrēt</item>
+    </array>
+
+    <array name="NavChangeDbBT">
+        <item>Change data base</item>
+        <item>Сменить базу данных</item>
+        <item>Mainīt datu bāzi</item>
+    </array>
+
+    <array name="NavLanguage">
+        <item>Language:</item>
+        <item>Язык:</item>
+        <item>Valoda:</item>
+    </array>
+    
+    <array name="NavExitBT">
+        <item>Exit</item>
+        <item>Выйти</item>
+        <item>Iziet</item>
+    </array>
+
+    <array name="FilterTimeOver">
+        <item>Time over</item>
+        <item>Время вышло</item>
+        <item>Laiks beidzies</item>
+    </array>
+
+    <array name="FilterTimeEnough">
+        <item>Time enough</item>
+        <item>Время достаточно</item>
+        <item>Pietiek laika</item>
+    </array>
+
+    <array name="DialogTimeFrom">
+        <item>From</item>
+        <item>На стоянке с:</item>
+        <item>Stāvēts no</item>
+    </array>
+
+    <array name="DialogTimeTo">
+        <item>To</item>
+        <item>Стоянку оплатил до</item>
+        <item>Stāvvieta apmaksāta Līdz</item>
+    </array>
+
+    <array name="DialogOkeyBT">
+        <item>Okey</item>
+        <item>Хорошо</item>
+        <item>Labi</item>
+    </array>
+
+    <array name="DialogCancelBT">
+        <item>Cancel</item>
+        <item>Отменить</item>
+        <item>Atcelt</item>
+    </array>
+
+    <array name="DialogBackBT">
+        <item>Back</item>
+        <item>Назад</item>
+        <item>Atpakaļ</item>
+    </array>
+
+    <array name="DialogUsername">
+        <item>Username</item>
+        <item>Имя пользователя</item>
+        <item>Lietotājvārds</item>
+    </array>
+
+    <array name="DialogPassword">
+        <item>Password</item>
+        <item>Пароль</item>
+        <item>Parole</item>
+    </array>
+
+    <array name="DialogChoseDB">
+        <item>Chose Database</item>
+        <item>Выберите базу данных</item>
+        <item>Izvēlieties datu bāzi</item>
+    </array>
+
+
+</resources>

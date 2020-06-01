@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/TimeOKTextColor"
+        android:text="Time Enough"
+        android:id="@+id/checkbox_TimeEnough"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/AbonnementTextColor"
+        android:text="A"
+        android:id="@+id/checkbox_A"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/MobillyTextColor"
+        android:text="M"
+        android:id="@+id/checkbox_M"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time ends"
+        android:textColor="@color/TimeEndsTextColor"
+        android:id="@+id/checkbox_timeEnd"/>
+
+
+</LinearLayout>

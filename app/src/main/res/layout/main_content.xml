@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/shape"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/guideline"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="#2639A3F5">
+
+        <Space
+            android:id="@+id/space1"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+
+        <Button
+            android:id="@+id/sortByName"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/space1"
+            android:background="@color/refreshBTbackColor"
+            android:fontFamily="@font/baloo"
+            android:text="A-Z"
+            android:textColor="@color/refressBTtextColor"
+            android:textSize="25dp">
+
+        </Button>
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:id="@+id/sortByTime"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/space2"
+            android:background="@color/refreshBTbackColor"
+            android:fontFamily="@font/baloo"
+            android:text="T>"
+            android:textColor="@color/refressBTtextColor"
+            android:textSize="25dp">
+
+        </Button>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/refreshBT"
+            android:layout_below="@+id/sortByName">
+
+            <ListView
+                android:id="@+id/ListOfItems"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/sortByTime"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true">
+
+            </ListView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            android:id="@+id/refreshBT"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/refreshBTbackColor"
+            android:fontFamily="@font/baloo"
+            android:textColor="@color/refressBTtextColor"
+            android:textSize="25dp">
+        </Button>
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

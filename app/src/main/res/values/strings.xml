@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FPKDV_kotlinStyle</string>
+    <string name="SendButtonText">Send</string>
+    <string name="login">LogIn</string>
+    <string name="English_lang">EN</string>
+    <string name="Russian_lang">RU</string>
+    <string name="Latvian_lang">LV</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">search</string>
+
+
+</resources>

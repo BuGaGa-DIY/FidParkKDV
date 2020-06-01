@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="PreferenceName">MyPreference</string>
+    <string name="HostName">HostName</string>
+    <string name="Port">Port</string>
+    <string name="UserName">UserName</string>
+    <string name="Password">Password</string>
+    <string name="ZoneID">ZoneID</string>
+    <string name="LanguageID">LanguageID</string>
+    <string name="FilterAbonnement">FilterAbonnement</string>
+    <string name="FilterMobilly">FilterMobilly</string>
+    <string name="FilterTimeOver">FilterTimeOver</string>
+    <string name="FilterTimeEnough">FilterTimeEnough</string>
+</resources>
