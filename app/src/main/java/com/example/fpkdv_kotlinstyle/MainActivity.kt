@@ -251,5 +251,10 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         super.onResume()
         val client = Client(context,myHandler,rowDataList, null)
         client.sendRequestGetAll()
+        translate()
+    }
+
+    private fun translate(){
+        TODO()//Do some translate
     }
 }
