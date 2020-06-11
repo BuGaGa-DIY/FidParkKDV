@@ -1,6 +1,7 @@
 package com.example.fpkdv_kotlinstyle
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -55,6 +56,7 @@ class CheckOneLpnActivity : AppCompatActivity() {
 
             }
         }
+        sendBT.text = getTranslatedString(R.array.SendBT)
 
     }
 
@@ -76,4 +78,11 @@ class CheckOneLpnActivity : AppCompatActivity() {
         finish()
         return true
     }
+
+    private fun getTranslatedString(stringID:Int):String{
+        val index = getSharedPreferences(R.string.PreferenceName.toString(), Context.MODE_PRIVATE).getInt(R.string.LanguageID.toString(),0)
+        val result = this.getResources().getStringArray(stringID)[index]
+        return result
+    }
+
 }

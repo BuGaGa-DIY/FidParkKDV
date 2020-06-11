@@ -97,5 +97,9 @@
         <item>Izvēlieties datu bāzi</item>
     </array>
 
-
+    <array name="SendBT">
+        <item>Send</item>
+        <item>Отправить</item>
+        <item>Sūtīt</item>
+    </array>
 </resources>

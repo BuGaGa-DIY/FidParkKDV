@@ -23,7 +23,7 @@ class LogIn(context:Activity,handler: Handler?) {
     fun showDialog(){
         lateinit var dialog:AlertDialog
         val builder = AlertDialog.Builder(mainContext)
-        builder.setTitle("Chose Database")
+        builder.setTitle(Translate(mainContext).getTranslatedString(R.array.DialogChoseDB))
         val dataBasesStringArray = arrayOf("Spikeri nami", "Strong Volvo", "Web Biss")
         builder.setSingleChoiceItems(dataBasesStringArray,-1) { _, wich ->
             val settings = mainContext.getSharedPreferences(R.string.PreferenceName.toString(), Context.MODE_PRIVATE)

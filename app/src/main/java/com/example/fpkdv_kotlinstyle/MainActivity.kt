@@ -6,6 +6,7 @@ import android.app.AlertDialog
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -31,6 +32,7 @@ import com.example.fpkdv_kotlinstyle.Records.ZoneRecord
 import com.example.fpkdv_kotlinstyle.Tools.Enums.AdapterEnums
 import com.example.fpkdv_kotlinstyle.Tools.Enums.whatStait
 import com.example.fpkdv_kotlinstyle.utilit.LogIn
+import com.example.fpkdv_kotlinstyle.utilit.Translate
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.filter_dialog.view.*
 import java.util.*
@@ -229,18 +231,21 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 val edit = setting.edit()
                 edit.putInt(R.string.LanguageID.toString(),0)
                 edit.apply()
+                initUI()
             }
             R.id.nav_LanguageRU -> {
                 val setting = getSharedPreferences(R.string.PreferenceName.toString(),Context.MODE_PRIVATE)
                 val edit = setting.edit()
                 edit.putInt(R.string.LanguageID.toString(),1)
                 edit.apply()
+                initUI()
             }
             R.id.nav_LanguageLV -> {
                 val setting = getSharedPreferences(R.string.PreferenceName.toString(),Context.MODE_PRIVATE)
                 val edit = setting.edit()
                 edit.putInt(R.string.LanguageID.toString(),2)
                 edit.apply()
+                initUI()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
@@ -251,10 +256,16 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         super.onResume()
         val client = Client(context,myHandler,rowDataList, null)
         client.sendRequestGetAll()
-        //translate()
+        initUI()
     }
 
-    private fun translate(){
-        TODO()//Do some translate
+    private fun initUI(){
+        refreshButton.text = Translate(context).getTranslatedString(R.array.RefreshBT)
+        navMenu.findItem(R.id.nav_ExitBT).title = Translate(context).getTranslatedString(R.array.NavExitBT)
+        navMenu.findItem(R.id.nav_FilterBT).title = Translate(context).getTranslatedString(R.array.NavFilterBT)
+        navMenu.findItem(R.id.nav_check_one_lpn).title = Translate(context).getTranslatedString(R.array.NavCheckOneLpnBT)
+        navMenu.findItem(R.id.nav_LoginBT).title = Translate(context).getTranslatedString(R.array.NavChangeDbBT)
+
     }
+
 }
