@@ -71,7 +71,7 @@ open class Client(context:Activity, handler: Handler,
         okHttpClient.newCall(request).enqueue(object: Callback {
             override fun onFailure(call: Call?, e: IOException?) {
                 sendHandlerMsg(whatStait.RequestFail.ordinal,e)
-                output("some error")
+                output("Request error: $e")
             }
 
             override fun onResponse(call: Call?, response: Response?) {
