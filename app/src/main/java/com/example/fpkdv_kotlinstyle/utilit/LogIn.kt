@@ -63,14 +63,16 @@ class LogIn(context:Activity,handler: Handler?) {
         inflator.PassWordDialogET.text =
             Editable.Factory.getInstance().newEditable(
             settings.getString(R.string.Password.toString(),""))
+        inflator.PassWordDialogET.hint = Editable.Factory.getInstance().newEditable(Translate(mainContext).getTranslatedString(R.array.DialogPassword))
         inflator.UserNameDialogET.text =
             Editable.Factory.getInstance().newEditable(
                 settings.getString(R.string.UserName.toString(),""))
+        inflator.UserNameDialogET.hint = Editable.Factory.getInstance().newEditable(Translate(mainContext).getTranslatedString(R.array.DialogUsername))
 
-        builder.setTitle("Enter some crap")
+        builder.setTitle(Translate(mainContext).getTranslatedString(R.array.LoginPassTitle))
         builder.setView(inflator)
 
-        builder.setPositiveButton("GO!"){dialog, which ->
+        builder.setPositiveButton(Translate(mainContext).getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
             val settings = mainContext.getSharedPreferences(R.string.PreferenceName.toString(),Context.MODE_PRIVATE)
             val edit = settings.edit()
             edit.putString(R.string.UserName.toString(),inflator.UserNameDialogET.text.toString())
@@ -79,13 +81,10 @@ class LogIn(context:Activity,handler: Handler?) {
             dialog.dismiss()
             localHandler?.sendMessage(Message.obtain(localHandler,whatStait.GetAllZonesRequest.ordinal))
         }
-        builder.setNeutralButton("Cancel"){dialog, which ->
+        builder.setNeutralButton(Translate(mainContext).getTranslatedString(R.array.DialogCancelBT)){dialog, which ->
             dialog.dismiss()
         }
-        builder.setNegativeButton("Back"){dialog, which ->
-            dialog.dismiss()
-            showDialog()
-        }
+
         builder.setCancelable(false)
         dialog = builder.create()
         dialog.show()

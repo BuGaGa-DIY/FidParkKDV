@@ -209,9 +209,11 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 inflator.checkbox_A.isChecked = setting.getBoolean(R.string.FilterAbonnement.toString(),true)
                 inflator.checkbox_M.isChecked = setting.getBoolean(R.string.FilterMobilly.toString(),true)
                 inflator.checkbox_TimeEnough.isChecked = setting.getBoolean(R.string.FilterTimeEnough.toString(),true)
+                inflator.checkbox_TimeEnough.text = Translate(context).getTranslatedString(R.array.FilterTimeEnough)
                 inflator.checkbox_timeEnd.isChecked = setting.getBoolean(R.string.FilterTimeOver.toString(),true)
+                inflator.checkbox_timeEnd.text = Translate(context).getTranslatedString(R.array.FilterTimeOver)
                 builder.setView(inflator)
-                builder.setPositiveButton("Ok"){dialog, which ->
+                builder.setPositiveButton(Translate(context).getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
                     edit.putBoolean(R.string.FilterAbonnement.toString(),inflator.checkbox_A.isChecked)
                     edit.putBoolean(R.string.FilterMobilly.toString(),inflator.checkbox_M.isChecked)
                     edit.putBoolean(R.string.FilterTimeEnough.toString(),inflator.checkbox_TimeEnough.isChecked)

@@ -51,7 +51,7 @@
 
     <array name="DialogTimeFrom">
         <item>From</item>
-        <item>На стоянке с:</item>
+        <item>На стоянке с</item>
         <item>Stāvēts no</item>
     </array>
 
@@ -102,4 +102,11 @@
         <item>Отправить</item>
         <item>Sūtīt</item>
     </array>
+
+    <array name="LoginPassTitle">
+        <item>Enter username and password</item>
+        <item>Введите имя пользователя и пароль</item>
+        <item>Ievadiet lietotājvārdu un paroli</item>
+    </array>
+
 </resources>

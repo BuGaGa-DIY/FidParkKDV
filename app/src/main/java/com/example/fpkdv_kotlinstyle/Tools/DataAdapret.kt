@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import com.example.fpkdv_kotlinstyle.R
 import com.example.fpkdv_kotlinstyle.Records.DataRecord
 import com.example.fpkdv_kotlinstyle.Tools.Enums.AdapterEnums
+import com.example.fpkdv_kotlinstyle.utilit.Translate
 
 class DataAdapret(context:Activity, dataList:List<DataRecord>): BaseAdapter() {
     private val mInflator: LayoutInflater
@@ -51,8 +52,10 @@ class DataAdapret(context:Activity, dataList:List<DataRecord>): BaseAdapter() {
         view?.setOnClickListener{
             var builder = AlertDialog.Builder(mainContext)
             builder.setTitle("${mainDataList[position].lpn}")
-            builder.setMessage("From: ${mainDataList[position].timeFrom}\nTo: ${mainDataList[position].timeTo}")
-            builder.setPositiveButton("Okey!"){dialogInterface, which ->
+            val fromStr = Translate(mainContext).getTranslatedString(R.array.DialogTimeFrom)
+            val toStr = Translate(mainContext).getTranslatedString(R.array.DialogTimeTo)
+            builder.setMessage("$fromStr: ${mainDataList[position].timeFrom}\n$toStr: ${mainDataList[position].timeTo}")
+            builder.setPositiveButton(Translate(mainContext).getTranslatedString(R.array.DialogOkeyBT)){ dialogInterface, which ->
                 dialogInterface.dismiss()
             }
             builder.create().show()
