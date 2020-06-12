@@ -78,6 +78,12 @@
         <item>Назад</item>
         <item>Atpakaļ</item>
     </array>
+    
+    <array name="DialogFineBT">
+        <item>fine</item>
+        <item>оштрафовать</item>
+        <item>sodīt</item>
+    </array>
 
     <array name="DialogUsername">
         <item>Username</item>
@@ -95,6 +101,12 @@
         <item>Chose Database</item>
         <item>Выберите базу данных</item>
         <item>Izvēlieties datu bāzi</item>
+    </array>
+
+    <array name="CarNotInDB">
+        <item>The Vehicle is not in database</item>
+        <item>Автомобиль отсутствует в базе данных</item>
+        <item>Transportlīdzeklis nav datu bāzē</item>
     </array>
 
     <array name="SendBT">

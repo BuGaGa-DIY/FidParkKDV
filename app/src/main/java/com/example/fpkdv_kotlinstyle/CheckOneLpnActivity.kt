@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.fpkdv_kotlinstyle.Records.DataRecord
 import com.example.fpkdv_kotlinstyle.Tools.Client
 import com.example.fpkdv_kotlinstyle.Tools.Enums.whatStait
+import com.example.fpkdv_kotlinstyle.utilit.Translate
 
 class CheckOneLpnActivity : AppCompatActivity() {
     private val context = this
@@ -64,11 +65,13 @@ class CheckOneLpnActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         if (response){
             builder.setTitle(data?.lpn)
-            builder.setMessage("From: ${data?.timeFrom}\nTo: ${data?.timeTo}")
+            val fromStr = Translate(context).getTranslatedString(R.array.DialogTimeFrom)
+            val toStr = Translate(context).getTranslatedString(R.array.DialogTimeTo)
+            builder.setMessage("$fromStr: ${data?.timeFrom}\n$toStr: ${data?.timeTo}")
         }else{
-            builder.setTitle("Car not in DB")
+            builder.setTitle(Translate(context).getTranslatedString(R.array.CarNotInDB))
         }
-        builder.setPositiveButton("Ok"){dialog, which ->
+        builder.setPositiveButton(Translate(context).getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
             dialog.dismiss()
         }
         builder.create().show()

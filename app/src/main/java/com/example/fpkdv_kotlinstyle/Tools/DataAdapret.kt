@@ -58,6 +58,11 @@ class DataAdapret(context:Activity, dataList:List<DataRecord>): BaseAdapter() {
             builder.setPositiveButton(Translate(mainContext).getTranslatedString(R.array.DialogOkeyBT)){ dialogInterface, which ->
                 dialogInterface.dismiss()
             }
+            if(mainDataList[position].timeLeftInMillis<0 && !mainDataList[position].parkingType.equals("Mobilly")){
+                builder.setNeutralButton(Translate(mainContext).getTranslatedString(R.array.DialogFineBT)){dialog, which ->
+                      dialog.dismiss()
+                }
+            }
             builder.create().show()
         }
 
