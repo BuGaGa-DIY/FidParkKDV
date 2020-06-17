@@ -5,6 +5,11 @@
         <item>80</item>
     </string-array>
 
+    <string-array name="SpikeriNamiAsirius">
+        <item>http://92.63.86.168</item>
+        <item>81</item>
+    </string-array>
+
     <string-array name="VolvoStrong">
         <item>http://104.45.84.145</item>
         <item>82</item>

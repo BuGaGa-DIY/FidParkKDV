@@ -10,10 +10,11 @@ import com.example.fpkdv_kotlinstyle.R
 import com.example.fpkdv_kotlinstyle.Records.DataRecord
 import com.example.fpkdv_kotlinstyle.Records.ZoneRecord
 import com.example.fpkdv_kotlinstyle.Tools.Enums.whatStait
+import com.example.fpkdv_kotlinstyle.utilit.FileLoger
 import okhttp3.*
 import java.io.IOException
 
-open class Client(context:Activity, handler: Handler,
+open class Client(val context:Activity, handler: Handler,
                   private var dataList: MutableList<DataRecord>?,
                   private var zoneList: MutableList<ZoneRecord>?
 ) : AsyncTask<Void, Void, Void>() {
@@ -67,15 +68,17 @@ open class Client(context:Activity, handler: Handler,
     override fun doInBackground(vararg params: Void?): Void? {
         output(R.string.PreferenceName.toString())
         val request: Request = Request.Builder().url(RequestLink).build()
-
+        FileLoger(context).WriteLine("$_RequestType Request sent")
         okHttpClient.newCall(request).enqueue(object: Callback {
             override fun onFailure(call: Call?, e: IOException?) {
                 sendHandlerMsg(whatStait.RequestFail.ordinal,e)
                 output("Request error: $e")
+                FileLoger(context).WriteLine("Request fail: ${e?.printStackTrace()}")
             }
 
             override fun onResponse(call: Call?, response: Response?) {
                 this@Client.response = response?.body()?.string()
+                FileLoger(context).WriteLine("Client response: ${this@Client.response}")
                 output("response:${this@Client.response}")
                 parsDataSender(this@Client.response)
             }
@@ -91,6 +94,7 @@ open class Client(context:Activity, handler: Handler,
             return
         }
         if (inputdata.contains("You are not authorized to use this section.")){
+            FileLoger(context).WriteLine("Got incorrect Login Pass response")
             sendHandlerMsg(whatStait.AuthorizationFail.ordinal,null)
             return
         }

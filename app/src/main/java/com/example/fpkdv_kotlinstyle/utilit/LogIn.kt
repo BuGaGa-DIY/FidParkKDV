@@ -24,7 +24,7 @@ class LogIn(context:Activity,handler: Handler?) {
         lateinit var dialog:AlertDialog
         val builder = AlertDialog.Builder(mainContext)
         builder.setTitle(Translate(mainContext).getTranslatedString(R.array.DialogChoseDB))
-        val dataBasesStringArray = arrayOf("Spikeri nami", "Strong Volvo", "Web Biss")
+        val dataBasesStringArray = arrayOf("Spikeri nami", "Asirius", "Strong Volvo", "Web Biss")
         builder.setSingleChoiceItems(dataBasesStringArray,-1) { _, wich ->
             val settings = mainContext.getSharedPreferences(R.string.PreferenceName.toString(), Context.MODE_PRIVATE)
             var editor = settings.edit()
@@ -34,18 +34,28 @@ class LogIn(context:Activity,handler: Handler?) {
                     editor.putString(R.string.HostName.toString(), res[0])
                     editor.putString(R.string.Port.toString(),res[1])
                     editor.apply()
+                    FileLoger(mainContext).WriteLine("DB changed to ${dataBasesStringArray.get(0)}")
                 }
                 1->{
+                    val res = mainContext.resources.getStringArray(R.array.SpikeriNamiAsirius)
+                    editor.putString(R.string.HostName.toString(), res[0])
+                    editor.putString(R.string.Port.toString(),res[1])
+                    editor.apply()
+                    FileLoger(mainContext).WriteLine("DB changed to ${dataBasesStringArray.get(1)}")
+                }
+                2->{
                     val res = mainContext.resources.getStringArray(R.array.VolvoStrong)
                     editor.putString(R.string.HostName.toString(), res[0])
                     editor.putString(R.string.Port.toString(),res[1])
                     editor.apply()
+                    FileLoger(mainContext).WriteLine("DB changed to ${dataBasesStringArray.get(2)}")
                 }
-                2 ->{
+                3 ->{
                     val res = mainContext.resources.getStringArray(R.array.FidparkWeb)
                     editor.putString(R.string.HostName.toString(), res[0])
                     editor.putString(R.string.Port.toString(),res[1])
                     editor.apply()
+                    FileLoger(mainContext).WriteLine("DB changed to ${dataBasesStringArray.get(3)}")
                 }
             }
             dialog.dismiss()
@@ -55,7 +65,7 @@ class LogIn(context:Activity,handler: Handler?) {
         dialog.show()
     }
 
-    fun getLoginPass(){
+    fun getLoginPass(incorrectLoginPass:Boolean = false){
         lateinit var dialog: AlertDialog
         val builder = AlertDialog.Builder(mainContext)
         val inflator = LayoutInflater.from(mainContext).inflate(R.layout.login_pass_layout,null)
@@ -69,7 +79,8 @@ class LogIn(context:Activity,handler: Handler?) {
                 settings.getString(R.string.UserName.toString(),""))
         inflator.UserNameDialogET.hint = Editable.Factory.getInstance().newEditable(Translate(mainContext).getTranslatedString(R.array.DialogUsername))
 
-        builder.setTitle(Translate(mainContext).getTranslatedString(R.array.LoginPassTitle))
+        if (!incorrectLoginPass)builder.setTitle(Translate(mainContext).getTranslatedString(R.array.LoginPassTitle))
+        else builder.setTitle(Translate(mainContext).getTranslatedString(R.array.IncorrectLoginPassTitle))
         builder.setView(inflator)
 
         builder.setPositiveButton(Translate(mainContext).getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
@@ -96,6 +107,7 @@ class LogIn(context:Activity,handler: Handler?) {
             var edit = setting.edit()
             edit.putString(R.string.ZoneID.toString(),zoneList[0].zoneID)
             edit.apply()
+            FileLoger(mainContext).WriteLine("Choosing zone:${zoneList[0].zoneName}; zoneID:${zoneList[0].zoneID}")
         }
         else if (zoneList.size>1){
             lateinit var dialog:AlertDialog
@@ -110,6 +122,7 @@ class LogIn(context:Activity,handler: Handler?) {
                 var editor = settings.edit()
                 editor.putString(R.string.ZoneID.toString(),zoneList[wich].zoneID)
                 editor.apply()
+                FileLoger(mainContext).WriteLine("Choosing zone:${zoneList[wich].zoneName}; zoneID:${zoneList[wich].zoneID}")
                 dialog.dismiss()
             }
             dialog = builder.create()

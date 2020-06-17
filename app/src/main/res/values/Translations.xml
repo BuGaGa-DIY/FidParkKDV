@@ -15,7 +15,7 @@
 
     <array name="NavFilterBT">
         <item>Filter</item>
-        <item>Фильтер</item>
+        <item>Фильтр</item>
         <item>Filtrēt</item>
     </array>
 
@@ -103,6 +103,12 @@
         <item>Izvēlieties datu bāzi</item>
     </array>
 
+    <array name="DialogSubscription">
+        <item>Subscription</item>
+        <item>Абонемент</item>
+        <item>Abonements</item>
+    </array>
+
     <array name="CarNotInDB">
         <item>The Vehicle is not in database</item>
         <item>Автомобиль отсутствует в базе данных</item>
@@ -119,6 +125,18 @@
         <item>Enter username and password</item>
         <item>Введите имя пользователя и пароль</item>
         <item>Ievadiet lietotājvārdu un paroli</item>
+    </array>
+
+    <array name="IncorrectLoginPassTitle">
+        <item>Incorrect username or password</item>
+        <item>Неправильное имя пользователя или пароль</item>
+        <item>Nepareizs lietotājvārds vai parole</item>
+    </array>
+
+    <array name="ConnectionFail">
+        <item>Connecting to server fail</item>
+        <item>Не удалось соеденится с сервером</item>
+        <item>Nevar izveidot savienojumu ar serveri</item>
     </array>
 
 </resources>

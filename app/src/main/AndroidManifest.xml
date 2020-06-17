@@ -9,11 +9,13 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="true"
         android:icon="@drawable/icon"
-        android:label="FP KDV"
+        android:label="FP KDV2"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CheckOneLpnActivity"/>
+        <activity android:name=".LogFileList"/>
+        <activity android:name=".LogFileViewer"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

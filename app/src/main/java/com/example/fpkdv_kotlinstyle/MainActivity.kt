@@ -23,6 +23,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.fpkdv_kotlinstyle.Tools.Client
@@ -119,7 +120,14 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             override fun handleMessage(msg: Message) {
                 super.handleMessage(msg)
                 when(msg.what){
-                    whatStait.RequestFail.ordinal -> Toast.makeText(context,"Connection fail", Toast.LENGTH_SHORT).show()
+                    whatStait.RequestFail.ordinal -> {
+                        Toast.makeText(
+                            context,
+                            Translate(context).getTranslatedString(R.array.ConnectionFail),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        swipeRefresh.isRefreshing = false
+                    }
                     whatStait.GetAllReady.ordinal -> {
                         filteredDataList.clear()
                         filteredDataList.addAll(setFilter())
@@ -134,7 +142,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                         val loadZone = LogIn(context,null)
                         loadZone.getZone(zoneList)
                     }
-                    whatStait.AuthorizationFail.ordinal -> LogIn(context,myHandler).getLoginPass()
+                    whatStait.AuthorizationFail.ordinal -> LogIn(context,myHandler).getLoginPass(true)
                     else -> swipeRefresh.isRefreshing = false
                 }
             }
@@ -212,6 +220,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 inflator.checkbox_TimeEnough.text = Translate(context).getTranslatedString(R.array.FilterTimeEnough)
                 inflator.checkbox_timeEnd.isChecked = setting.getBoolean(R.string.FilterTimeOver.toString(),true)
                 inflator.checkbox_timeEnd.text = Translate(context).getTranslatedString(R.array.FilterTimeOver)
+                inflator.checkbox_A.text = Translate(context).getTranslatedString(R.array.DialogSubscription)
+                inflator.FilterDialogTitle.text = Translate(context).getTranslatedString(R.array.NavFilterBT)
+                //if (setting.getString(R.string.HostName.toString(),"") == resources.getStringArray(R.array.VolvoStrong)[0]) inflator.checkbox_M.isVisible = false
                 builder.setView(inflator)
                 builder.setPositiveButton(Translate(context).getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
                     edit.putBoolean(R.string.FilterAbonnement.toString(),inflator.checkbox_A.isChecked)
@@ -226,6 +237,10 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 }
 
                 builder.create().show()
+            }
+            R.id.nav_LogFiles ->{
+                val intent = Intent(applicationContext,LogFileList::class.java)
+                startActivity(intent)
             }
             R.id.nav_ExitBT -> finish()
             R.id.nav_LanguageEN -> {
