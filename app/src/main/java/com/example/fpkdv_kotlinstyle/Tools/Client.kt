@@ -66,7 +66,7 @@ open class Client(val context:Activity, handler: Handler,
         execute()
     }
     override fun doInBackground(vararg params: Void?): Void? {
-        output(R.string.PreferenceName.toString())
+        //output(R.string.PreferenceName.toString())
         val request: Request = Request.Builder().url(RequestLink).build()
         FileLoger(context).WriteLine("$_RequestType Request sent")
         okHttpClient.newCall(request).enqueue(object: Callback {

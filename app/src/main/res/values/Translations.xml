@@ -139,4 +139,10 @@
         <item>Nevar izveidot savienojumu ar serveri</item>
     </array>
 
+    <array name="LogFileActTitle">
+        <item>Log files</item>
+        <item>Лог файлы</item>
+        <item>Log faili</item>
+    </array>
+
 </resources>

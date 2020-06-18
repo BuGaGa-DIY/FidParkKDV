@@ -3,9 +3,11 @@ package com.example.fpkdv_kotlinstyle
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fpkdv_kotlinstyle.utilit.Translate
 
 class LogFileList : AppCompatActivity() {
 
@@ -14,7 +16,10 @@ class LogFileList : AppCompatActivity() {
         setContentView(R.layout.log_file_list_layout)
 
         val itemList = findViewById<ListView>(R.id.ItemListView)
-
+        val actionBar = supportActionBar
+        actionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.shape))
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.title = Translate(applicationContext).getTranslatedString(R.array.LogFileActTitle)
 
         val path = getExternalFilesDir("output")
         output("Path dir: $path")
@@ -29,6 +34,11 @@ class LogFileList : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        finish()
+        return super.onOptionsItemSelected(item)
     }
 
     private fun output(data:String){
