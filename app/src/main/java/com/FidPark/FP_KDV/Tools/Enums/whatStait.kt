@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle.Tools.Enums
+package com.FidPark.FP_KDV.Tools.Enums
 
 enum class whatStait {
     RequestFail,

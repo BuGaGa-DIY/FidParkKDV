@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle.Tools
+package com.FidPark.FP_KDV.Tools
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -12,10 +12,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.example.fpkdv_kotlinstyle.R
-import com.example.fpkdv_kotlinstyle.Records.DataRecord
-import com.example.fpkdv_kotlinstyle.Tools.Enums.AdapterEnums
-import com.example.fpkdv_kotlinstyle.utilit.Translate
+import com.FidPark.FP_KDV.R
+import com.FidPark.FP_KDV.Records.DataRecord
+import com.FidPark.FP_KDV.Tools.Enums.AdapterEnums
+import com.FidPark.FP_KDV.utilit.Translate
 
 class DataAdapret(context:Activity, dataList:List<DataRecord>): BaseAdapter() {
     private val mInflator: LayoutInflater

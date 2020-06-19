@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle
+package com.FidPark.FP_KDV
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,7 +1,7 @@
-package com.example.fpkdv_kotlinstyle.utilit
+package com.FidPark.FP_KDV.utilit
 
 import android.content.Context
-import com.example.fpkdv_kotlinstyle.R
+import com.FidPark.FP_KDV.R
 
 class Translate(val context: Context) {
     public fun getTranslatedString(stringID:Int):String{

@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle
+package com.FidPark.FP_KDV
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -6,7 +6,6 @@ import android.app.AlertDialog
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -23,17 +22,16 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
-import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.fpkdv_kotlinstyle.Tools.Client
-import com.example.fpkdv_kotlinstyle.Tools.DataAdapret
-import com.example.fpkdv_kotlinstyle.Records.DataRecord
-import com.example.fpkdv_kotlinstyle.Records.ZoneRecord
-import com.example.fpkdv_kotlinstyle.Tools.Enums.AdapterEnums
-import com.example.fpkdv_kotlinstyle.Tools.Enums.whatStait
-import com.example.fpkdv_kotlinstyle.utilit.LogIn
-import com.example.fpkdv_kotlinstyle.utilit.Translate
+import com.FidPark.FP_KDV.Tools.Client
+import com.FidPark.FP_KDV.Tools.DataAdapret
+import com.FidPark.FP_KDV.Records.DataRecord
+import com.FidPark.FP_KDV.Records.ZoneRecord
+import com.FidPark.FP_KDV.Tools.Enums.AdapterEnums
+import com.FidPark.FP_KDV.Tools.Enums.whatStait
+import com.FidPark.FP_KDV.utilit.LogIn
+import com.FidPark.FP_KDV.utilit.Translate
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.filter_dialog.view.*
 import java.util.*

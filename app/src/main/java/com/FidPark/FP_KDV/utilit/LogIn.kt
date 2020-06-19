@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle.utilit
+package com.FidPark.FP_KDV.utilit
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -8,9 +8,9 @@ import android.os.Message
 import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
-import com.example.fpkdv_kotlinstyle.R
-import com.example.fpkdv_kotlinstyle.Records.ZoneRecord
-import com.example.fpkdv_kotlinstyle.Tools.Enums.whatStait
+import com.FidPark.FP_KDV.R
+import com.FidPark.FP_KDV.Records.ZoneRecord
+import com.FidPark.FP_KDV.Tools.Enums.whatStait
 import kotlinx.android.synthetic.main.login_pass_layout.view.*
 
 class LogIn(context:Activity,handler: Handler?) {

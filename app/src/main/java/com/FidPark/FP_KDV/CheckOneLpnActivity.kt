@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle
+package com.FidPark.FP_KDV
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,10 +11,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.fpkdv_kotlinstyle.Records.DataRecord
-import com.example.fpkdv_kotlinstyle.Tools.Client
-import com.example.fpkdv_kotlinstyle.Tools.Enums.whatStait
-import com.example.fpkdv_kotlinstyle.utilit.Translate
+import com.FidPark.FP_KDV.Records.DataRecord
+import com.FidPark.FP_KDV.Tools.Client
+import com.FidPark.FP_KDV.Tools.Enums.whatStait
+import com.FidPark.FP_KDV.utilit.Translate
 
 class CheckOneLpnActivity : AppCompatActivity() {
     private val context = this

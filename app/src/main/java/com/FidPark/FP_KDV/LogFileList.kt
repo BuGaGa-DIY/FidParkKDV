@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle
+package com.FidPark.FP_KDV
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fpkdv_kotlinstyle.utilit.Translate
+import com.FidPark.FP_KDV.utilit.Translate
 
 class LogFileList : AppCompatActivity() {
 

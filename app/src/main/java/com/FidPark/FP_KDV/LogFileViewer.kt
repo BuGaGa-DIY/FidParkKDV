@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle
+package com.FidPark.FP_KDV
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,7 +11,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fpkdv_kotlinstyle.utilit.FileLoger
+import com.FidPark.FP_KDV.utilit.FileLoger
 import kotlinx.android.synthetic.main.log_file_viewer_layout.*
 import java.net.URLConnection
 

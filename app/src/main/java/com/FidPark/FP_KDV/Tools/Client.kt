@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle.Tools
+package com.FidPark.FP_KDV.Tools
 
 import android.app.Activity
 import android.content.Context
@@ -6,11 +6,11 @@ import android.os.AsyncTask
 import android.os.Handler
 import android.os.Message
 import android.util.Log
-import com.example.fpkdv_kotlinstyle.R
-import com.example.fpkdv_kotlinstyle.Records.DataRecord
-import com.example.fpkdv_kotlinstyle.Records.ZoneRecord
-import com.example.fpkdv_kotlinstyle.Tools.Enums.whatStait
-import com.example.fpkdv_kotlinstyle.utilit.FileLoger
+import com.FidPark.FP_KDV.R
+import com.FidPark.FP_KDV.Records.DataRecord
+import com.FidPark.FP_KDV.Records.ZoneRecord
+import com.FidPark.FP_KDV.Tools.Enums.whatStait
+import com.FidPark.FP_KDV.utilit.FileLoger
 import okhttp3.*
 import java.io.IOException
 

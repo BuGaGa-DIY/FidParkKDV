@@ -1,4 +1,4 @@
-package com.example.fpkdv_kotlinstyle.Records
+package com.FidPark.FP_KDV.Records
 
 class ZoneRecord(zonename:String,zoneid:String) {
     var zoneName:String = ""
