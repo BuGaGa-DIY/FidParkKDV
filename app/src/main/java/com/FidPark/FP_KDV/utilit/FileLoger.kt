@@ -1,10 +1,12 @@
 package com.FidPark.FP_KDV.utilit
 
 import android.content.Context
+import android.os.Message
 import android.util.Log
 import java.io.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.logging.Handler
 
 class FileLoger(val mainContext: Context) {
 
@@ -28,9 +30,38 @@ class FileLoger(val mainContext: Context) {
         }
     }
 
-    fun LoadFile(fileName:String):String{
+    fun LoadFile(fileName:String, dataSender: android.os.Handler){
         var result = ""
 
+        val mainPath = mainContext.getExternalFilesDir("output")
+        if (mainPath != null && mainPath.exists()){
+            try {
+                val file = File(mainPath, fileName)
+                val reader = FileReader(file)
+                var cnt = 0
+                var ch :Char
+                while (reader.ready()){
+                    ch = reader.read().toChar()
+                    if (ch == '\n') cnt++
+                    if (cnt == 50){
+                        cnt = 0
+                        dataSender.sendMessage(Message.obtain(dataSender,1,result))
+                        result = ""
+                    }else result += ch
+                }
+                if (result != "") dataSender.sendMessage(Message.obtain(dataSender,0,result))
+
+                output("File road normal")
+            }catch (e : FileNotFoundException){
+                output("File not found while trying read file")
+            }catch (e : IOException){
+                output("Read from file fail: $e")
+            }
+        }
+    }
+
+    fun LoadTextBlock(fileName:String):String{
+        var result = ""
         val mainPath = mainContext.getExternalFilesDir("output")
         if (mainPath != null && mainPath.exists()){
             try {
@@ -44,7 +75,6 @@ class FileLoger(val mainContext: Context) {
                 output("Read from file fail: $e")
             }
         }
-
         return result
     }
 

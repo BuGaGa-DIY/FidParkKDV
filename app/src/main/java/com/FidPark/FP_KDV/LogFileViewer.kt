@@ -1,6 +1,7 @@
 package com.FidPark.FP_KDV
 
 import android.annotation.SuppressLint
+import android.app.ActionBar
 import android.content.Intent
 import android.net.Uri
 import android.os.AsyncTask
@@ -10,6 +11,10 @@ import android.os.Message
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.FidPark.FP_KDV.utilit.FileLoger
 import kotlinx.android.synthetic.main.log_file_viewer_layout.*
@@ -19,6 +24,7 @@ class LogFileViewer: AppCompatActivity() {
 
     var fileName : String = ""
     lateinit var fileHandler : Handler
+    lateinit var parentLayout : LinearLayout
     var myTask : MyTask? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,17 +33,27 @@ class LogFileViewer: AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.shape))
         actionBar?.setDisplayHomeAsUpEnabled(true)
-
+        parentLayout = findViewById(R.id.MainTextLayout)
 
         FileViewerSwipe.isRefreshing = true
         FileViewerSwipe.setOnRefreshListener { FileViewerSwipe.isRefreshing = false }
         fileHandler = @SuppressLint("HandlerLeak")
         object : Handler() {
+            private fun packData(data :String){
+                val tmpTextBox = TextView(applicationContext)
+                tmpTextBox.text = data
+                tmpTextBox.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
+                parentLayout.addView(tmpTextBox)
+            }
             override fun handleMessage(msg: Message) {
                 when(msg.what){
                     0->{
-                        OutputTextBox.text = msg.obj.toString()
+                        packData(msg.obj.toString())
                         FileViewerSwipe.isRefreshing = false
+                        FileViewerSwipe.isEnabled = false
+                    }
+                    1->{
+                        packData(msg.obj.toString())
                     }
                 }
                 super.handleMessage(msg)
@@ -80,20 +96,10 @@ class LogFileViewer: AppCompatActivity() {
 
     @SuppressLint("StaticFieldLeak")
     inner class MyTask(var handl: Handler) : AsyncTask<Void,Void,Void>(){
-
-        var str :String = ""
         override fun doInBackground(vararg params: Void?): Void? {
-            str = FileLoger(applicationContext).LoadFile(fileName)
-
+            FileLoger(applicationContext).LoadFile(fileName,handl)
             return null
         }
-
-        override fun onPostExecute(result: Void?) {
-            handl.sendMessage(Message.obtain(handl,0,str))
-
-            super.onPostExecute(result)
-        }
-
     }
 
     private fun output(data:String){
