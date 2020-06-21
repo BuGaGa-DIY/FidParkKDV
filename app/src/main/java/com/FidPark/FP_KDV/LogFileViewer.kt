@@ -51,6 +51,7 @@ class LogFileViewer: AppCompatActivity() {
                         packData(msg.obj.toString())
                         FileViewerSwipe.isRefreshing = false
                         FileViewerSwipe.isEnabled = false
+                        ViewerScrollView.post { ViewerScrollView.fullScroll(ScrollView.FOCUS_DOWN) }
                     }
                     1->{
                         packData(msg.obj.toString())

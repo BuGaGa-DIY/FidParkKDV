@@ -30,6 +30,7 @@ import com.FidPark.FP_KDV.Records.DataRecord
 import com.FidPark.FP_KDV.Records.ZoneRecord
 import com.FidPark.FP_KDV.Tools.Enums.AdapterEnums
 import com.FidPark.FP_KDV.Tools.Enums.whatStait
+import com.FidPark.FP_KDV.utilit.FileLoger
 import com.FidPark.FP_KDV.utilit.LogIn
 import com.FidPark.FP_KDV.utilit.Translate
 import com.google.android.material.navigation.NavigationView
@@ -129,6 +130,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                     whatStait.GetAllReady.ordinal -> {
                         filteredDataList.clear()
                         filteredDataList.addAll(setFilter())
+                        FileLoger(applicationContext).WriteLine("Data size after filter: ${filteredDataList.size}")
                         dataListAdapter?.notifyDataSetChanged()
                         swipeRefresh.isRefreshing = false
                     }

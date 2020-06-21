@@ -122,6 +122,10 @@ open class Client(val context:Activity, handler: Handler,
     private fun parsGetAllData(data: String){
         var tmpData:String = data
         dataList?.clear()
+        val tmpResponseCount = tmpData.substring(
+            tmpData.indexOf("<Response>")+10
+            ,tmpData.indexOf("</Response>"))
+        FileLoger(context).WriteLine("Response in row data: ${tmpResponseCount}")
         while (tmpData.contains("<Result>")) {
             var startIndex = tmpData.indexOf("<LPN>")
             var stopIndex = tmpData.indexOf("</LPN>")

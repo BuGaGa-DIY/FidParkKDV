@@ -43,7 +43,7 @@ class FileLoger(val mainContext: Context) {
                 while (reader.ready()){
                     ch = reader.read().toChar()
                     if (ch == '\n') cnt++
-                    if (cnt == 50){
+                    if (cnt == 20){
                         cnt = 0
                         dataSender.sendMessage(Message.obtain(dataSender,1,result))
                         result = ""
