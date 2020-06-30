@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV.Tools
+package lv.bis.fpkdv.Tools
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -12,10 +12,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.FidPark.FP_KDV.R
-import com.FidPark.FP_KDV.Records.DataRecord
-import com.FidPark.FP_KDV.Tools.Enums.AdapterEnums
-import com.FidPark.FP_KDV.utilit.Translate
+import lv.bis.fpkdv.R
+import lv.bis.fpkdv.Records.DataRecord
+import lv.bis.fpkdv.Tools.Enums.AdapterEnums
+import lv.bis.fpkdv.utilit.Translate
 
 class DataAdapret(context:Activity, dataList:List<DataRecord>): BaseAdapter() {
     private val mInflator: LayoutInflater
@@ -55,11 +55,17 @@ class DataAdapret(context:Activity, dataList:List<DataRecord>): BaseAdapter() {
             val fromStr = Translate(mainContext).getTranslatedString(R.array.DialogTimeFrom)
             val toStr = Translate(mainContext).getTranslatedString(R.array.DialogTimeTo)
             builder.setMessage("$fromStr: ${mainDataList[position].timeFrom}\n$toStr: ${mainDataList[position].timeTo}")
-            builder.setPositiveButton(Translate(mainContext).getTranslatedString(R.array.DialogOkeyBT)){ dialogInterface, which ->
+            builder.setPositiveButton(
+                Translate(
+                    mainContext
+                ).getTranslatedString(R.array.DialogOkeyBT)){ dialogInterface, which ->
                 dialogInterface.dismiss()
             }
             if(mainDataList[position].timeLeftInMillis<0 && mainDataList[position].parkingType != "Mobilly"){
-                builder.setNeutralButton(Translate(mainContext).getTranslatedString(R.array.DialogFineBT)){dialog, which ->
+                builder.setNeutralButton(
+                    Translate(
+                        mainContext
+                    ).getTranslatedString(R.array.DialogFineBT)){ dialog, which ->
                       dialog.dismiss()
                 }
             }

@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV.Tools
+package lv.bis.fpkdv.Tools
 
 import android.app.Activity
 import android.content.Context
@@ -6,11 +6,11 @@ import android.os.AsyncTask
 import android.os.Handler
 import android.os.Message
 import android.util.Log
-import com.FidPark.FP_KDV.R
-import com.FidPark.FP_KDV.Records.DataRecord
-import com.FidPark.FP_KDV.Records.ZoneRecord
-import com.FidPark.FP_KDV.Tools.Enums.whatStait
-import com.FidPark.FP_KDV.utilit.FileLoger
+import lv.bis.fpkdv.R
+import lv.bis.fpkdv.Records.DataRecord
+import lv.bis.fpkdv.Records.ZoneRecord
+import lv.bis.fpkdv.Tools.Enums.whatStait
+import lv.bis.fpkdv.utilit.FileLoger
 import okhttp3.*
 import java.io.IOException
 
@@ -162,7 +162,12 @@ open class Client(val context:Activity, handler: Handler,
             startIndex = tmpData.indexOf("<ZoneName>")
             stopIndex = tmpData.indexOf("</ZoneName>")
             val tmpZonename = tmpData.substring(startIndex + 10, stopIndex)
-            zoneList?.add(ZoneRecord(tmpZonename, tmpZoneid))
+            zoneList?.add(
+                ZoneRecord(
+                    tmpZonename,
+                    tmpZoneid
+                )
+            )
             tmpData = tmpData.substring(tmpData.indexOf("</Zone>") + 7)
         }
         sendHandlerMsg(whatStait.GetZonesReady.ordinal,null)
@@ -184,7 +189,12 @@ open class Client(val context:Activity, handler: Handler,
             startIndex = tmpData.indexOf("<ParkingType>")
             stopIndex = tmpData.indexOf("</ParkingType>")
             val tmpParkingType = tmpData.substring(startIndex + 13, stopIndex)
-            val singeDataRecord = DataRecord(tmpLpn,tmpFrom,tmpTo,tmpParkingType)
+            val singeDataRecord = DataRecord(
+                tmpLpn,
+                tmpFrom,
+                tmpTo,
+                tmpParkingType
+            )
             sendHandlerMsg(whatStait.GetOneReadyTrue.ordinal,singeDataRecord)
         }
     }

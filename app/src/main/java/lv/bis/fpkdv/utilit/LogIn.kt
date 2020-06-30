@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV.utilit
+package lv.bis.fpkdv.utilit
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -8,9 +8,9 @@ import android.os.Message
 import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
-import com.FidPark.FP_KDV.R
-import com.FidPark.FP_KDV.Records.ZoneRecord
-import com.FidPark.FP_KDV.Tools.Enums.whatStait
+import lv.bis.fpkdv.R
+import lv.bis.fpkdv.Records.ZoneRecord
+import lv.bis.fpkdv.Tools.Enums.whatStait
 import kotlinx.android.synthetic.main.login_pass_layout.view.*
 
 class LogIn(context:Activity,handler: Handler?) {
@@ -73,26 +73,36 @@ class LogIn(context:Activity,handler: Handler?) {
         inflator.PassWordDialogET.text =
             Editable.Factory.getInstance().newEditable(
             settings.getString(R.string.Password.toString(),""))
-        inflator.PassWordDialogET.hint = Editable.Factory.getInstance().newEditable(Translate(mainContext).getTranslatedString(R.array.DialogPassword))
+        inflator.PassWordDialogET.hint = Editable.Factory.getInstance().newEditable(
+            Translate(mainContext).getTranslatedString(R.array.DialogPassword))
         inflator.UserNameDialogET.text =
             Editable.Factory.getInstance().newEditable(
                 settings.getString(R.string.UserName.toString(),""))
-        inflator.UserNameDialogET.hint = Editable.Factory.getInstance().newEditable(Translate(mainContext).getTranslatedString(R.array.DialogUsername))
+        inflator.UserNameDialogET.hint = Editable.Factory.getInstance().newEditable(
+            Translate(mainContext).getTranslatedString(R.array.DialogUsername))
 
-        if (!incorrectLoginPass)builder.setTitle(Translate(mainContext).getTranslatedString(R.array.LoginPassTitle))
+        if (!incorrectLoginPass)builder.setTitle(
+            Translate(
+                mainContext
+            ).getTranslatedString(R.array.LoginPassTitle))
         else builder.setTitle(Translate(mainContext).getTranslatedString(R.array.IncorrectLoginPassTitle))
         builder.setView(inflator)
 
-        builder.setPositiveButton(Translate(mainContext).getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
+        builder.setPositiveButton(
+            Translate(mainContext)
+                .getTranslatedString(R.array.DialogOkeyBT)){ dialog, which ->
             val settings = mainContext.getSharedPreferences(R.string.PreferenceName.toString(),Context.MODE_PRIVATE)
             val edit = settings.edit()
             edit.putString(R.string.UserName.toString(),inflator.UserNameDialogET.text.toString())
             edit.putString(R.string.Password.toString(),inflator.PassWordDialogET.text.toString())
             edit.apply()
             dialog.dismiss()
-            localHandler?.sendMessage(Message.obtain(localHandler,whatStait.GetAllZonesRequest.ordinal))
+            localHandler?.sendMessage(Message.obtain(localHandler,
+                whatStait.GetAllZonesRequest.ordinal))
         }
-        builder.setNeutralButton(Translate(mainContext).getTranslatedString(R.array.DialogCancelBT)){dialog, which ->
+        builder.setNeutralButton(
+            Translate(mainContext)
+                .getTranslatedString(R.array.DialogCancelBT)){ dialog, which ->
             dialog.dismiss()
         }
 

@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV.Records
+package lv.bis.fpkdv.Records
 
 import android.util.Log
 import java.lang.Exception

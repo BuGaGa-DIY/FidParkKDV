@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV
+package lv.bis.fpkdv
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -24,15 +24,16 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.FidPark.FP_KDV.Tools.Client
-import com.FidPark.FP_KDV.Tools.DataAdapret
-import com.FidPark.FP_KDV.Records.DataRecord
-import com.FidPark.FP_KDV.Records.ZoneRecord
-import com.FidPark.FP_KDV.Tools.Enums.AdapterEnums
-import com.FidPark.FP_KDV.Tools.Enums.whatStait
-import com.FidPark.FP_KDV.utilit.FileLoger
-import com.FidPark.FP_KDV.utilit.LogIn
-import com.FidPark.FP_KDV.utilit.Translate
+import lv.bis.fpkdv.R
+import lv.bis.fpkdv.Tools.Client
+import lv.bis.fpkdv.Tools.DataAdapret
+import lv.bis.fpkdv.Records.DataRecord
+import lv.bis.fpkdv.Records.ZoneRecord
+import lv.bis.fpkdv.Tools.Enums.AdapterEnums
+import lv.bis.fpkdv.Tools.Enums.whatStait
+import lv.bis.fpkdv.utilit.FileLoger
+import lv.bis.fpkdv.utilit.LogIn
+import lv.bis.fpkdv.utilit.Translate
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.filter_dialog.view.*
 import java.util.*
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     lateinit var refreshButton: Button
     lateinit var sortNameBT: Button
     lateinit var sortTimeBT: Button
-    var dataListAdapter:DataAdapret? = null
+    var dataListAdapter: DataAdapret? = null
 
     var myHandler: Handler = Handler()
 
@@ -74,18 +75,29 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         navMenu = navView.menu
 
         carListView = findViewById(R.id.ListOfItems)
-        dataListAdapter = DataAdapret(context,filteredDataList)
+        dataListAdapter =
+            DataAdapret(context, filteredDataList)
         carListView.adapter = dataListAdapter
 
         refreshButton = findViewById(R.id.refreshBT)
         refreshButton.setOnClickListener{
             swipeRefresh.isRefreshing = true
-            val client = Client(context,myHandler,rowDataList,zoneList)
+            val client = Client(
+                context,
+                myHandler,
+                rowDataList,
+                zoneList
+            )
             client.sendRequestGetAll()
         }
         swipeRefresh = findViewById(R.id.swipeContainer)
         swipeRefresh.setOnRefreshListener{
-            val client = Client(context,myHandler,rowDataList,zoneList)
+            val client = Client(
+                context,
+                myHandler,
+                rowDataList,
+                zoneList
+            )
             client.sendRequestGetAll()
         }
 
@@ -122,7 +134,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                     whatStait.RequestFail.ordinal -> {
                         Toast.makeText(
                             context,
-                            Translate(context).getTranslatedString(R.array.ConnectionFail),
+                            Translate(context)
+                                .getTranslatedString(R.array.ConnectionFail),
                             Toast.LENGTH_SHORT
                         ).show()
                         swipeRefresh.isRefreshing = false
@@ -135,14 +148,23 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                         swipeRefresh.isRefreshing = false
                     }
                     whatStait.GetAllZonesRequest.ordinal -> {
-                        val client = Client(context,myHandler,rowDataList,zoneList)
+                        val client = Client(
+                            context,
+                            myHandler,
+                            rowDataList,
+                            zoneList
+                        )
                         client.sendRequestGetZones()
                     }
                     whatStait.GetZonesReady.ordinal -> {
-                        val loadZone = LogIn(context,null)
+                        val loadZone =
+                            LogIn(context, null)
                         loadZone.getZone(zoneList)
                     }
-                    whatStait.AuthorizationFail.ordinal -> LogIn(context,myHandler).getLoginPass(true)
+                    whatStait.AuthorizationFail.ordinal -> LogIn(
+                        context,
+                        myHandler
+                    ).getLoginPass(true)
                     else -> swipeRefresh.isRefreshing = false
                 }
             }
@@ -202,11 +224,12 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when(p0.itemId){
             R.id.nav_check_one_lpn -> {
-                val intent = Intent(context,CheckOneLpnActivity::class.java)
+                val intent = Intent(context,
+                    CheckOneLpnActivity::class.java)
                 startActivity(intent)
             }
             R.id.nav_LoginBT ->{
-              val login = LogIn(context,myHandler)
+              val login = LogIn(context, myHandler)
                 login.showDialog()
             }
             R.id.nav_FilterBT ->{
@@ -217,14 +240,28 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 inflator.checkbox_A.isChecked = setting.getBoolean(R.string.FilterAbonnement.toString(),true)
                 inflator.checkbox_M.isChecked = setting.getBoolean(R.string.FilterMobilly.toString(),true)
                 inflator.checkbox_TimeEnough.isChecked = setting.getBoolean(R.string.FilterTimeEnough.toString(),true)
-                inflator.checkbox_TimeEnough.text = Translate(context).getTranslatedString(R.array.FilterTimeEnough)
+                inflator.checkbox_TimeEnough.text = Translate(
+                    context
+                )
+                    .getTranslatedString(R.array.FilterTimeEnough)
                 inflator.checkbox_timeEnd.isChecked = setting.getBoolean(R.string.FilterTimeOver.toString(),true)
-                inflator.checkbox_timeEnd.text = Translate(context).getTranslatedString(R.array.FilterTimeOver)
-                inflator.checkbox_A.text = Translate(context).getTranslatedString(R.array.DialogSubscription)
-                inflator.FilterDialogTitle.text = Translate(context).getTranslatedString(R.array.NavFilterBT)
+                inflator.checkbox_timeEnd.text = Translate(
+                    context
+                ).getTranslatedString(R.array.FilterTimeOver)
+                inflator.checkbox_A.text = Translate(
+                    context
+                )
+                    .getTranslatedString(R.array.DialogSubscription)
+                inflator.FilterDialogTitle.text = Translate(
+                    context
+                ).getTranslatedString(R.array.NavFilterBT)
                 //if (setting.getString(R.string.HostName.toString(),"") == resources.getStringArray(R.array.VolvoStrong)[0]) inflator.checkbox_M.isVisible = false
                 builder.setView(inflator)
-                builder.setPositiveButton(Translate(context).getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
+                builder.setPositiveButton(
+                    Translate(
+                        context
+                    )
+                        .getTranslatedString(R.array.DialogOkeyBT)){ dialog, which ->
                     edit.putBoolean(R.string.FilterAbonnement.toString(),inflator.checkbox_A.isChecked)
                     edit.putBoolean(R.string.FilterMobilly.toString(),inflator.checkbox_M.isChecked)
                     edit.putBoolean(R.string.FilterTimeEnough.toString(),inflator.checkbox_TimeEnough.isChecked)
@@ -239,7 +276,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 builder.create().show()
             }
             R.id.nav_LogFiles ->{
-                val intent = Intent(applicationContext,LogFileList::class.java)
+                val intent = Intent(applicationContext,
+                    LogFileList::class.java)
                 startActivity(intent)
             }
             R.id.nav_ExitBT -> finish()
@@ -271,17 +309,27 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     override fun onResume() {
         super.onResume()
-        val client = Client(context,myHandler,rowDataList, null)
+        val client =
+            Client(context, myHandler, rowDataList, null)
         client.sendRequestGetAll()
         initUI()
     }
 
     private fun initUI(){
-        refreshButton.text = Translate(context).getTranslatedString(R.array.RefreshBT)
-        navMenu.findItem(R.id.nav_ExitBT).title = Translate(context).getTranslatedString(R.array.NavExitBT)
-        navMenu.findItem(R.id.nav_FilterBT).title = Translate(context).getTranslatedString(R.array.NavFilterBT)
-        navMenu.findItem(R.id.nav_check_one_lpn).title = Translate(context).getTranslatedString(R.array.NavCheckOneLpnBT)
-        navMenu.findItem(R.id.nav_LoginBT).title = Translate(context).getTranslatedString(R.array.NavChangeDbBT)
+        refreshButton.text = Translate(context)
+            .getTranslatedString(R.array.RefreshBT)
+        navMenu.findItem(R.id.nav_ExitBT).title = Translate(
+            context
+        ).getTranslatedString(R.array.NavExitBT)
+        navMenu.findItem(R.id.nav_FilterBT).title = Translate(
+            context
+        ).getTranslatedString(R.array.NavFilterBT)
+        navMenu.findItem(R.id.nav_check_one_lpn).title = Translate(
+            context
+        ).getTranslatedString(R.array.NavCheckOneLpnBT)
+        navMenu.findItem(R.id.nav_LoginBT).title = Translate(
+            context
+        ).getTranslatedString(R.array.NavChangeDbBT)
 
     }
 

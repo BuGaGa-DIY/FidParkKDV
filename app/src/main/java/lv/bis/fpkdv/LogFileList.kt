@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV
+package lv.bis.fpkdv
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,8 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import com.FidPark.FP_KDV.utilit.Translate
+import lv.bis.fpkdv.R
+import lv.bis.fpkdv.utilit.Translate
 
 class LogFileList : AppCompatActivity() {
 
@@ -19,7 +20,8 @@ class LogFileList : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.shape))
         actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.title = Translate(applicationContext).getTranslatedString(R.array.LogFileActTitle)
+        actionBar?.title = Translate(applicationContext)
+            .getTranslatedString(R.array.LogFileActTitle)
 
         val path = getExternalFilesDir("output")
         output("Path dir: $path")
@@ -28,7 +30,8 @@ class LogFileList : AppCompatActivity() {
             val dataAdapter = ArrayAdapter(applicationContext,android.R.layout.simple_list_item_1,fileList)
             itemList.adapter = dataAdapter
             itemList.setOnItemClickListener{parent, view, position, id ->
-                val intent = Intent(applicationContext,LogFileViewer::class.java)
+                val intent = Intent(applicationContext,
+                    LogFileViewer::class.java)
                 intent.putExtra("FileName",fileList[position])
                 startActivity(intent)
             }

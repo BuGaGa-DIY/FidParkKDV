@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV.Records
+package lv.bis.fpkdv.Records
 
 class ZoneRecord(zonename:String,zoneid:String) {
     var zoneName:String = ""

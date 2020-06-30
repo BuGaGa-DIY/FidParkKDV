@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV
+package lv.bis.fpkdv
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

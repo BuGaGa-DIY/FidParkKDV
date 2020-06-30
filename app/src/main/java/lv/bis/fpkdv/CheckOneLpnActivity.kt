@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV
+package lv.bis.fpkdv
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,10 +11,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.FidPark.FP_KDV.Records.DataRecord
-import com.FidPark.FP_KDV.Tools.Client
-import com.FidPark.FP_KDV.Tools.Enums.whatStait
-import com.FidPark.FP_KDV.utilit.Translate
+import lv.bis.fpkdv.R
+import lv.bis.fpkdv.Records.DataRecord
+import lv.bis.fpkdv.Tools.Client
+import lv.bis.fpkdv.Tools.Enums.whatStait
+import lv.bis.fpkdv.utilit.Translate
 
 class CheckOneLpnActivity : AppCompatActivity() {
     private val context = this
@@ -51,7 +52,8 @@ class CheckOneLpnActivity : AppCompatActivity() {
 
         sendBT.setOnClickListener {
             if (lpnInput.text.toString() != "") {
-                val client = Client(this, handler, null, null)
+                val client =
+                    Client(this, handler, null, null)
                 client.sendRequestGetOne(lpnInput.text.toString())
             }else{
 
@@ -65,13 +67,19 @@ class CheckOneLpnActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         if (response){
             builder.setTitle(data?.lpn)
-            val fromStr = Translate(context).getTranslatedString(R.array.DialogTimeFrom)
-            val toStr = Translate(context).getTranslatedString(R.array.DialogTimeTo)
+            val fromStr = Translate(context)
+                .getTranslatedString(R.array.DialogTimeFrom)
+            val toStr = Translate(context)
+                .getTranslatedString(R.array.DialogTimeTo)
             builder.setMessage("$fromStr: ${data?.timeFrom}\n$toStr: ${data?.timeTo}")
         }else{
-            builder.setTitle(Translate(context).getTranslatedString(R.array.CarNotInDB))
+            builder.setTitle(
+                Translate(context)
+                    .getTranslatedString(R.array.CarNotInDB))
         }
-        builder.setPositiveButton(Translate(context).getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
+        builder.setPositiveButton(
+            Translate(context)
+                .getTranslatedString(R.array.DialogOkeyBT)){ dialog, which ->
             dialog.dismiss()
         }
         builder.create().show()
@@ -83,7 +91,8 @@ class CheckOneLpnActivity : AppCompatActivity() {
     }
 
     private fun getTranslatedString(stringID:Int):String{
-        val index = getSharedPreferences(R.string.PreferenceName.toString(), Context.MODE_PRIVATE).getInt(R.string.LanguageID.toString(),0)
+        val index = getSharedPreferences(R.string.PreferenceName.toString(), Context.MODE_PRIVATE).getInt(
+            R.string.LanguageID.toString(),0)
         val result = this.getResources().getStringArray(stringID)[index]
         return result
     }

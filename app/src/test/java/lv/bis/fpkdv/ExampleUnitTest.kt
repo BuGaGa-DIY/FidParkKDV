@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV
+package lv.bis.fpkdv
 
 import org.junit.Test
 

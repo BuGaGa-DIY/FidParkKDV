@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV.utilit
+package lv.bis.fpkdv.utilit
 
 import android.content.Context
 import android.os.Message
@@ -6,7 +6,6 @@ import android.util.Log
 import java.io.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.logging.Handler
 
 class FileLoger(val mainContext: Context) {
 

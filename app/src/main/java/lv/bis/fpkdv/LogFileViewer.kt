@@ -1,7 +1,6 @@
-package com.FidPark.FP_KDV
+package lv.bis.fpkdv
 
 import android.annotation.SuppressLint
-import android.app.ActionBar
 import android.content.Intent
 import android.net.Uri
 import android.os.AsyncTask
@@ -16,7 +15,8 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.FidPark.FP_KDV.utilit.FileLoger
+import lv.bis.fpkdv.R
+import lv.bis.fpkdv.utilit.FileLoger
 import kotlinx.android.synthetic.main.log_file_viewer_layout.*
 import java.net.URLConnection
 
@@ -76,7 +76,7 @@ class LogFileViewer: AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.FileViewerShareMenuItem->{
+            R.id.FileViewerShareMenuItem ->{
                 val mainPath = getExternalFilesDir("output/$fileName")
                 if (mainPath != null && mainPath.exists()){
                     val shareIntent = Intent(Intent.ACTION_SEND)
@@ -98,7 +98,8 @@ class LogFileViewer: AppCompatActivity() {
     @SuppressLint("StaticFieldLeak")
     inner class MyTask(var handl: Handler) : AsyncTask<Void,Void,Void>(){
         override fun doInBackground(vararg params: Void?): Void? {
-            FileLoger(applicationContext).LoadFile(fileName,handl)
+            FileLoger(applicationContext)
+                .LoadFile(fileName,handl)
             return null
         }
     }

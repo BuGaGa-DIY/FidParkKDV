@@ -1,4 +1,4 @@
-package com.FidPark.FP_KDV.Tools.Enums
+package lv.bis.fpkdv.Tools.Enums
 
 enum class whatStait {
     RequestFail,
