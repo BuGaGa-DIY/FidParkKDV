@@ -118,6 +118,7 @@ class LogIn(context:Activity,handler: Handler?) {
             edit.putString(R.string.ZoneID.toString(),zoneList[0].zoneID)
             edit.apply()
             FileLoger(mainContext).WriteLine("Choosing zone:${zoneList[0].zoneName}; zoneID:${zoneList[0].zoneID}")
+            localHandler?.sendMessage(Message.obtain(localHandler,whatStait.ZonePicked.ordinal))
         }
         else if (zoneList.size>1){
             lateinit var dialog:AlertDialog
@@ -134,6 +135,7 @@ class LogIn(context:Activity,handler: Handler?) {
                 editor.apply()
                 FileLoger(mainContext).WriteLine("Choosing zone:${zoneList[wich].zoneName}; zoneID:${zoneList[wich].zoneID}")
                 dialog.dismiss()
+                localHandler?.sendMessage(Message.obtain(localHandler,whatStait.ZonePicked.ordinal))
             }
             dialog = builder.create()
             dialog.show()

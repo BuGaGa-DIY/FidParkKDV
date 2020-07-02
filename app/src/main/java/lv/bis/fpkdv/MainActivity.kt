@@ -158,8 +158,17 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                     }
                     whatStait.GetZonesReady.ordinal -> {
                         val loadZone =
-                            LogIn(context, null)
+                            LogIn(context, myHandler)
                         loadZone.getZone(zoneList)
+                    }
+                    whatStait.ZonePicked.ordinal -> {
+                        val client = Client(
+                            context,
+                            myHandler,
+                            rowDataList,
+                            zoneList
+                        )
+                        client.sendRequestGetAll()
                     }
                     whatStait.AuthorizationFail.ordinal -> LogIn(
                         context,

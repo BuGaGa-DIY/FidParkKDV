@@ -15,10 +15,14 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import lv.bis.fpkdv.R
 import lv.bis.fpkdv.utilit.FileLoger
 import kotlinx.android.synthetic.main.log_file_viewer_layout.*
 import java.net.URLConnection
+import java.nio.channels.spi.SelectorProvider.provider
 
 class LogFileViewer: AppCompatActivity() {
 
@@ -79,9 +83,12 @@ class LogFileViewer: AppCompatActivity() {
             R.id.FileViewerShareMenuItem ->{
                 val mainPath = getExternalFilesDir("output/$fileName")
                 if (mainPath != null && mainPath.exists()){
-                    val shareIntent = Intent(Intent.ACTION_SEND)
-                    shareIntent.type = URLConnection.guessContentTypeFromName(mainPath.name)
-                    shareIntent.putExtra(Intent.EXTRA_STREAM,Uri.parse(mainPath.absolutePath))
+                    val logUri = FileProvider.getUriForFile(this,"lv.bis.fpkdv.provider",mainPath)
+                    val shareIntent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        type = "text/*"//URLConnection.guessContentTypeFromName(mainPath.name)
+                        putExtra(Intent.EXTRA_STREAM,logUri)
+                    }
                     startActivity(Intent.createChooser(shareIntent, "Send Log with"))
                 }
                 else output("File path null or don't exist")
@@ -91,7 +98,6 @@ class LogFileViewer: AppCompatActivity() {
                 finish()
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
 

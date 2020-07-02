@@ -9,6 +9,6 @@ enum class whatStait {
     GetOneReadyTrue,
     GetOneReadyFalse,
     UnexpectedPackage,
-    GetAllZonesRequest
-
+    GetAllZonesRequest,
+    ZonePicked
 }

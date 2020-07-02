@@ -73,7 +73,7 @@ open class Client(val context:Activity, handler: Handler,
             override fun onFailure(call: Call?, e: IOException?) {
                 sendHandlerMsg(whatStait.RequestFail.ordinal,e)
                 output("Request error: $e")
-                FileLoger(context).WriteLine("Request fail: ${e?.printStackTrace()}")
+                FileLoger(context).WriteLine("Request fail: ${e}")
             }
 
             override fun onResponse(call: Call?, response: Response?) {
