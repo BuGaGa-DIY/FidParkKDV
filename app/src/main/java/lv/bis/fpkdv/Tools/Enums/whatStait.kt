@@ -8,6 +8,7 @@ enum class whatStait {
     GetZonesReady,
     GetOneReadyTrue,
     GetOneReadyFalse,
+    GetOneReadyMobillyError,
     UnexpectedPackage,
     GetAllZonesRequest,
     ZonePicked

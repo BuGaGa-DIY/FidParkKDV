@@ -46,6 +46,12 @@ class CheckOneLpnActivity : AppCompatActivity() {
                     whatStait.GetOneReadyFalse.ordinal -> {
                         showMsg(false,null)
                     }
+                    whatStait.GetOneReadyMobillyError.ordinal -> {
+                        responsMobillyErrorWindow()
+                    }
+                    whatStait.UnexpectedPackage.ordinal -> {
+                        responseErrorAlertWindow()
+                    }
                 }
             }
         }
@@ -71,7 +77,11 @@ class CheckOneLpnActivity : AppCompatActivity() {
                 .getTranslatedString(R.array.DialogTimeFrom)
             val toStr = Translate(context)
                 .getTranslatedString(R.array.DialogTimeTo)
-            builder.setMessage("$fromStr: ${data?.timeFrom}\n$toStr: ${data?.timeTo}")
+            if (data?.parkingType == "Mobilly"){
+                val mobClientTmpStr = getTranslatedString(R.array.MobillyClientString)
+                builder.setMessage(mobClientTmpStr + "\n$fromStr: ${data.timeFrom}")
+            }else
+                builder.setMessage("$fromStr: ${data?.timeFrom}\n$toStr: ${data?.timeTo}")
         }else{
             builder.setTitle(
                 Translate(context)
@@ -83,6 +93,31 @@ class CheckOneLpnActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         builder.create().show()
+    }
+
+    private fun responseErrorAlertWindow(){
+        val builder = AlertDialog.Builder(context)
+        builder.setMessage(getTranslatedString(R.array.ErrorResponseFromServer))
+        builder.setPositiveButton(getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
+            dialog.dismiss()
+        }
+        builder.show()
+    }
+
+    private fun responsMobillyErrorWindow(){
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(lpnInput.text.toString())
+        builder.setMessage(getTranslatedString(R.array.NoINFidParkDBMobillyError))
+        builder.setPositiveButton(getTranslatedString(R.array.DialogOkeyBT)){dialog, which ->
+            dialog.dismiss()
+        }
+        builder.setNeutralButton(getTranslatedString(R.array.DialogRepeatRequestBT)){dialog, which ->
+            val client =
+                Client(this, handler, null, null)
+            client.sendRequestGetOne(lpnInput.text.toString())
+            dialog.dismiss()
+        }
+        builder.show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

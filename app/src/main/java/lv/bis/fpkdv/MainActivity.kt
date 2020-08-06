@@ -146,6 +146,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                         FileLoger(applicationContext).WriteLine("Data size after filter: ${filteredDataList.size}")
                         dataListAdapter?.notifyDataSetChanged()
                         swipeRefresh.isRefreshing = false
+                        if (msg.obj == false) getMobillyResponseError()
                     }
                     whatStait.GetAllZonesRequest.ordinal -> {
                         val client = Client(
@@ -180,6 +181,28 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         }
     }
 
+    private fun getMobillyResponseError(){
+        val builder = AlertDialog.Builder(this)
+        val msg = Translate(context).getTranslatedString(R.array.ErrorResponseFromMobilly)
+        builder.setMessage(msg)
+        builder.setPositiveButton(Translate(context).getTranslatedString(R.array.DialogOkeyBT))
+        {dialog, which ->
+            dialog.dismiss()
+        }
+        builder.setNeutralButton(Translate(context).getTranslatedString(R.array.DialogRepeatRequestBT))
+        {dialog, which ->
+            val client = Client(
+                context,
+                myHandler,
+                rowDataList,
+                zoneList
+            )
+            client.sendRequestGetAll()
+            dialog.dismiss()
+            swipeRefresh.isRefreshing = true
+        }
+        builder.show()
+    }
     private fun setFilter():MutableList<DataRecord>{
         var tmpDataList = mutableListOf<DataRecord>()
         val setting = getSharedPreferences(R.string.PreferenceName.toString(),Context.MODE_PRIVATE)

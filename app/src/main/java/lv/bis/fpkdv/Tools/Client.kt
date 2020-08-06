@@ -149,7 +149,9 @@ open class Client(val context:Activity, handler: Handler,
             )
             tmpData = tmpData.substring(tmpData.indexOf("</Result>")+ 9)
         }
-        sendHandlerMsg(whatStait.GetAllReady.ordinal,null)
+        if (tmpData.contains("<MobillyResponse>False</MobillyResponse>"))
+            sendHandlerMsg(whatStait.GetAllReady.ordinal,false)
+        else sendHandlerMsg(whatStait.GetAllReady.ordinal,true)
     }
 
     private fun parsGetZonesData(data: String){
@@ -175,7 +177,11 @@ open class Client(val context:Activity, handler: Handler,
 
     private fun parsGetOneData(data: String){
         var tmpData = data
-        if(tmpData.contains("<Response>False</Response>")) sendHandlerMsg(whatStait.GetOneReadyFalse.ordinal,null)
+        if(tmpData.contains("<Response>False</Response>")){
+            if(tmpData.contains("<MobillyResponse>False</MobillyResponse>"))
+                sendHandlerMsg(whatStait.GetOneReadyMobillyError.ordinal,null)
+            else sendHandlerMsg(whatStait.GetOneReadyFalse.ordinal,null)
+        }
         else {
             var startIndex = tmpData.indexOf("<LPN>")
             var stopIndex = tmpData.indexOf("</LPN>")

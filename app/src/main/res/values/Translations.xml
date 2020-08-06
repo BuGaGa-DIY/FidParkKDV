@@ -73,6 +73,12 @@
         <item>Atcelt</item>
     </array>
 
+    <array name="DialogRepeatRequestBT">
+        <item>Repeat request</item>
+        <item>Повторить запрос</item>
+        <item>Atkārtot pieprasījumu</item>
+    </array>
+
     <array name="DialogBackBT">
         <item>Back</item>
         <item>Назад</item>
@@ -145,4 +151,27 @@
         <item>Log faili</item>
     </array>
 
+    <array name="ErrorResponseFromServer">
+        <item>Error on Server side</item>
+        <item>Ошибка на стороне сервера</item>
+        <item>Kļūda servera pusē</item>
+    </array>
+
+    <array name="MobillyClientString">
+        <item>Mobilly client</item>
+        <item>Mobilly клиент</item>
+        <item>Mobilly klients</item>
+    </array>
+
+    <array name="NoINFidParkDBMobillyError">
+        <item>The number is not registered in the FidPark system, the Mobilly Server does not respond</item>
+        <item>В системе FidPark номер не зарегистрирован, Сервер  Мobilly  не отвечает</item>
+        <item>FidPark sistēma numurs nav reģistrēts, bet Mobilly serveris neatbild</item>
+    </array>
+
+    <array name="ErrorResponseFromMobilly">
+        <item>Received data only from FidPark system, Mobilly Server is not responding</item>
+        <item>Получены данные только из FidPark системы, Сервер Mobilly не отвечает</item>
+        <item>Tiek attēloti dati tikai no FidPark sistēmas, jo Mobilly serveris neatbild</item>
+    </array>
 </resources>
