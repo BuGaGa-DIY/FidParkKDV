@@ -2,28 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="179dp"
+    android:layout_height="190dp"
     android:paddingTop="10dp"
-    android:background="@drawable/fidpark_logo"
+    android:background="@android:color/white"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <!--<ImageView
-        android:layout_width="300dp"
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:layout_height="90dp"
-        android:background="@drawable/FPlogoWhite"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/fidpark_logo"
         />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kontroliera Darba Vieta"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="35dp"
-        android:gravity="center"
-        android:fontFamily="@font/baloo"
+        android:text="DB: "
+        android:id="@+id/DBTextView"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:gravity="start"
+        android:paddingStart="20dp"
         />
-        -->
+
 
 </LinearLayout>

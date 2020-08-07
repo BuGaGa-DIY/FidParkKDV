@@ -36,6 +36,7 @@ import lv.bis.fpkdv.utilit.LogIn
 import lv.bis.fpkdv.utilit.Translate
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.filter_dialog.view.*
+import kotlinx.android.synthetic.main.nav_header.view.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
@@ -161,6 +162,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                         val loadZone =
                             LogIn(context, myHandler)
                         loadZone.getZone(zoneList)
+                        navView.getHeaderView(0).DBTextView.text =
+                            "DB: ${getSharedPreferences(R.string.PreferenceName.toString(),Context.MODE_PRIVATE).
+                            getString(R.string.DBName.toString(),"")}"
                     }
                     whatStait.ZonePicked.ordinal -> {
                         val client = Client(
@@ -339,12 +343,16 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         return true
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onResume() {
         super.onResume()
         val client =
             Client(context, myHandler, rowDataList, null)
         client.sendRequestGetAll()
         initUI()
+        navView.getHeaderView(0).DBTextView.text =
+            "DB: ${getSharedPreferences(R.string.PreferenceName.toString(),Context.MODE_PRIVATE).
+            getString(R.string.DBName.toString(),"")}"
     }
 
     private fun initUI(){

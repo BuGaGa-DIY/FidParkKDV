@@ -33,6 +33,7 @@ class LogIn(context:Activity,handler: Handler?) {
                     val res = mainContext.resources.getStringArray(R.array.SpikeriNami)
                     editor.putString(R.string.HostName.toString(), res[0])
                     editor.putString(R.string.Port.toString(),res[1])
+                    editor.putString(R.string.DBName.toString(),dataBasesStringArray.get(0))
                     editor.apply()
                     FileLoger(mainContext).WriteLine("DB changed to ${dataBasesStringArray.get(0)}")
                 }
@@ -40,6 +41,7 @@ class LogIn(context:Activity,handler: Handler?) {
                     val res = mainContext.resources.getStringArray(R.array.SpikeriNamiAsirius)
                     editor.putString(R.string.HostName.toString(), res[0])
                     editor.putString(R.string.Port.toString(),res[1])
+                    editor.putString(R.string.DBName.toString(),dataBasesStringArray.get(1))
                     editor.apply()
                     FileLoger(mainContext).WriteLine("DB changed to ${dataBasesStringArray.get(1)}")
                 }
@@ -47,6 +49,7 @@ class LogIn(context:Activity,handler: Handler?) {
                     val res = mainContext.resources.getStringArray(R.array.VolvoStrong)
                     editor.putString(R.string.HostName.toString(), res[0])
                     editor.putString(R.string.Port.toString(),res[1])
+                    editor.putString(R.string.DBName.toString(),dataBasesStringArray.get(2))
                     editor.apply()
                     FileLoger(mainContext).WriteLine("DB changed to ${dataBasesStringArray.get(2)}")
                 }
@@ -54,6 +57,7 @@ class LogIn(context:Activity,handler: Handler?) {
                     val res = mainContext.resources.getStringArray(R.array.FidparkWeb)
                     editor.putString(R.string.HostName.toString(), res[0])
                     editor.putString(R.string.Port.toString(),res[1])
+                    editor.putString(R.string.DBName.toString(),dataBasesStringArray.get(3))
                     editor.apply()
                     FileLoger(mainContext).WriteLine("DB changed to ${dataBasesStringArray.get(3)}")
                 }

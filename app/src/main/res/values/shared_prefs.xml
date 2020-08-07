@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="PreferenceName">MyPreference</string>
+    <string name="DBName">DBName</string>
     <string name="HostName">HostName</string>
     <string name="Port">Port</string>
     <string name="UserName">UserName</string>

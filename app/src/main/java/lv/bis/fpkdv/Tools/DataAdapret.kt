@@ -54,7 +54,10 @@ class DataAdapret(context:Activity, dataList:List<DataRecord>): BaseAdapter() {
             builder.setTitle("${mainDataList[position].lpn}")
             val fromStr = Translate(mainContext).getTranslatedString(R.array.DialogTimeFrom)
             val toStr = Translate(mainContext).getTranslatedString(R.array.DialogTimeTo)
-            builder.setMessage("$fromStr: ${mainDataList[position].timeFrom}\n$toStr: ${mainDataList[position].timeTo}")
+            if(mainDataList[position].parkingType == "Mobilly")
+                builder.setMessage(Translate(mainContext).getTranslatedString(R.array.MobillyClientString))
+            else
+                builder.setMessage("$fromStr: ${mainDataList[position].timeFrom}\n$toStr: ${mainDataList[position].timeTo}")
             builder.setPositiveButton(
                 Translate(
                     mainContext

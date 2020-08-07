@@ -7,7 +7,7 @@
 
     <EditText
         android:id="@+id/inputLPN"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -19,9 +19,10 @@
         android:textSize="24dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/inputLPN"
         android:text="Check BT"
         android:id="@+id/checkOneLPNBT"

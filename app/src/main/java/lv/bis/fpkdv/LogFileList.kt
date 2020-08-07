@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import lv.bis.fpkdv.R
+import lv.bis.fpkdv.utilit.FileLoger
 import lv.bis.fpkdv.utilit.Translate
 
 class LogFileList : AppCompatActivity() {
@@ -34,6 +35,12 @@ class LogFileList : AppCompatActivity() {
                     LogFileViewer::class.java)
                 intent.putExtra("FileName",fileList[position])
                 startActivity(intent)
+            }
+            itemList.setOnItemLongClickListener { parent, view, position, id ->
+                FileLoger(applicationContext).removeFile(fileList[position])
+                val fileList = path.list()
+                dataAdapter.notifyDataSetChanged()
+                return@setOnItemLongClickListener true
             }
         }
 

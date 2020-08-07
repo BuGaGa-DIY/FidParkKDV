@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Message
 import android.util.Log
 import java.io.*
+import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -17,7 +18,7 @@ class FileLoger(val mainContext: Context) {
             var format = DateTimeFormatter.ofPattern("dd-MM-YY")
             val fileName = LocalDateTime.now().format(format)+"_LOG.txt"
             val file = File(path,fileName)
-            format = DateTimeFormatter.ofPattern("HH:mm:SS.ms")
+            format = DateTimeFormatter.ofPattern("HH:mm:ss.ms")
             val writer = FileWriter(file,true)
             writer.append(LocalDateTime.now().format(format) + " ")
             writer.append(data+"\n")
@@ -56,6 +57,16 @@ class FileLoger(val mainContext: Context) {
             }catch (e : IOException){
                 output("Read from file fail: $e")
             }
+        }
+    }
+
+    fun removeFile(fileName: String){
+        val mainPath = mainContext.getExternalFilesDir("output")
+        if (mainPath != null && mainPath.exists()){
+            try{
+                val file = File(mainPath,fileName)
+                file.delete()
+            }catch (e:Exception){}
         }
     }
 
